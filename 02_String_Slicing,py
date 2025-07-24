@@ -1,0 +1,57 @@
+
+message = "Hello My Brother,"
+name = 'Sanchit'
+
+# -----------------------------------------------------------------------------------------
+
+# Concatenating of two strings 
+DS = message + name
+print(DS)
+
+# -----------------------------------------------------------------------------------------
+
+# String Slicing
+print(name[0]) # Access The Character of any string 
+# name[0] = D ==> It Not Work, You Can Only access, Unable To Edit !
+
+# -----------------------------------------------------------------------------------------
+
+'''
+               This is type of string slicing
+
+name= "Sanchit"  Length = 7
+       0123456 = Positive Indices (Starting)
+       7654321 = Negative Indices (Starting) 
+
+if we try to print(name[0:5]) it get only first value and lower last for deploying 
+जर आपण print(name[0:५]) command दिला तर python 0 पासून 4 पर्यंत string घेतो ! 
+
+'''
+
+print(name[0:3])   # It Show 'San' As Answer  
+print(name[:3])    # Is same as name[0:3], it is one of Writing Trick  
+
+print(name[-7:-1]) # IT show 'Sanchi' as Answer
+print(name[-7:])   # IT show 'Sanchit' as Answer
+print(name[:-1])   # IT show 'Sanchi' as Answer
+print(name[:])     # IT show 'Sanchit' as Answer
+
+# -----------------------------------------------------------------------------------------
+
+'''                                Slicing With Skip Value                               ''' 
+
+word = "SanchitDarandle"
+     #  0123456789  
+
+print(word[0:15:2])  # Print 0 to 15 with skip value of 2, it show 'Snhtaade' 
+# print(word[:15:2]) # Print 0 to 5 with skip value of 2, it show 'Snhtaade' \\\ These Are The Shotcut's Of Slicing With Skip Value
+# print(word[0::2])  # Print 0 to 5 with skip value of 2, it show 'Snhtaade'  /// These Are The Shotcut's Of Slicing With Skip Value
+ 
+# One More Example
+
+print(word[0:15:3])  # Print 0 to 15 with skip value of 2, it show 'Sctrd'
+
+
+# ------------------------------------------------------------------------------------------ #
+                                    
+                                 # END OF THE PAGE #
