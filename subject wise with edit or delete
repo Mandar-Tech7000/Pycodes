@@ -1,0 +1,82 @@
+class Student:
+    def __init__(self, name, roll):
+        self.name = name
+        self.roll = roll
+        self.subjects = {}
+
+    def add_subject_marks(self):
+        n = int(input("Enter number of subjects: "))
+        for _ in range(n):
+            subject = input("Enter subject name: ")
+            marks = float(input(f"Enter marks for {subject}: "))
+            self.subjects[subject] = marks
+
+    def calculate_grade(self, avg):
+        if avg >= 90:
+            return "A+"
+        elif avg >= 80:
+            return "A"
+        elif avg >= 70:
+            return "B"
+        elif avg >= 60:
+            return "C"
+        elif avg >= 50:
+            return "D"
+        else:
+            return "F"
+
+    def display(self):
+        print(f"\nName: {self.name}, Roll: {self.roll}")
+        for subject, mark in self.subjects.items():
+            print(f"  {subject}: {mark}")
+        avg = sum(self.subjects.values()) / len(self.subjects) if self.subjects else 0
+        print(f"Average: {avg:.2f}, Grade: {self.calculate_grade(avg)}")
+
+students = []
+
+def find_student(roll):
+    for s in students:
+        if s.roll == roll:
+            return s
+    return None
+
+while True:
+    print("\n1. Add\n2. View All\n3. Edit\n4. Delete\n5. Exit")
+    ch = input("Choice: ")
+
+    if ch == '1':
+        name = input("Name: ")
+        roll = input("Roll: ")
+        s = Student(name, roll)
+        s.add_subject_marks()
+        students.append(s)
+
+    elif ch == '2':
+        if not students:
+            print("No records.")
+        for s in students:
+            s.display()
+
+    elif ch == '3':
+        roll = input("Enter roll to edit: ")
+        s = find_student(roll)
+        if s:
+            print("Enter new details:")
+            s.name = input("New name: ")
+            s.add_subject_marks()
+        else:
+            print("Student not found.")
+
+    elif ch == '4':
+        roll = input("Enter roll to delete: ")
+        s = find_student(roll)
+        if s:
+            students.remove(s)
+            print("Student deleted.")
+        else:
+            print("Not found.")
+
+    elif ch == '5':
+        break
+    else:
+        print("Invalid choice.")
