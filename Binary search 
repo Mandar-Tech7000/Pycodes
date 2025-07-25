@@ -1,0 +1,75 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    int n, d, r;
+    char ans;
+    
+
+    cout << "How Many Students Were Present for the program?: "<<endl;
+    cin >> n;
+
+    int a[n];
+    int mid, key;
+
+    for (d = 0; d < n; d++)
+    {
+        cout << "Enter Roll no.s " << endl;
+        cin >> a[d];
+    }
+
+    sort(a, a + n);
+
+    cout << "Presnt Roll no's are " << endl;
+
+    for (d = 0; d < n; d++)
+    {
+        cout << a[d] << " ";
+    }
+    do
+    {
+        int strt = 0, end = n - 1;
+        bool match = 0;
+        
+        cout << endl
+             << "Enter roll which you want to verify: ";
+        cin >> key;
+
+        while (strt <= end)
+        {
+            mid = (strt + end) / 2;
+
+            if (a[mid] == key)
+            {
+                match = 1;
+                break;
+            }
+            else if (a[mid] < key)
+            {
+                strt = mid + 1;
+            }
+            else
+            {
+                end = mid - 1;
+            }
+        }
+
+        if (match == 0)
+        {
+            cout << "The Student was Absent";
+        }
+        else
+        {
+            cout << "The Student was Present";
+        }
+
+        cout << endl << "Do you want to check another roll_no ? (y/n): ";
+        cin >> ans;
+    } while (ans == 'y');
+    
+    cout<<"Thank you!";
+
+    return 0;
+}
