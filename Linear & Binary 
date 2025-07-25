@@ -1,0 +1,94 @@
+#include <iostream>        
+#include<algorithm>
+
+using namespace std;     
+
+int main() 
+{
+    int n,i, key;  s, m, e,match;     
+	int roll [n];    
+    cout << "How many students were present ?";
+    cin>>n;
+    cout<< "Enter the roll no. of all" <<n<<  "students:";
+
+for(i=0;i<n;i++)
+        {
+	    cin>>roll[i];
+        }
+cout<<"Present roll no.s are:";
+
+for (i=0; i<n ;i++)
+{
+
+    cout<< roll[i] <<" ";
+}
+
+ 
+char ch;
+do{
+cout<<"\n Enter the roll no. you want to verify";
+cin>>key;
+for(i=0;i<n;i++)
+{ 
+    if(roll[i]==key)
+        {
+        cout<<"Present";
+        break;
+
+if(i==n)
+{
+    cout<<"Absent";
+}
+cout<<"\n Do you want to continue y or n";
+cin>>ch;
+ 
+}while(ch=='y');
+ 
+ cout<<"for binary search";
+ sort(roll,roll+n);
+ cout<<"\nsorted data:";
+ for(i=0;i<n;i++)
+        {
+	    cout<<roll[i]<<", ";
+        }
+        
+do{
+
+s=0, e=n-1, match=0;
+cout<<"\nEnter key";
+cin>>key;
+
+while(s<=e)
+     {
+     	m=(s+e)/2;
+     	if (roll[m]==key)
+     	{
+     		match=1;
+     		break;
+		 }
+		 else if (key<roll[m])
+		 {
+		 	e=m-1;
+		 }
+		 else
+		 {
+		 	s=m+1;
+		 }
+		 
+	 }
+if(match==1)
+  { cout<<"Present";
+  }
+
+else
+{ cout<<"Absent";
+}
+cout<<"\n do you want to continue y or n";
+cin>>ch;
+}
+
+while(ch=='y');
+
+ return 0; 
+              
+}
