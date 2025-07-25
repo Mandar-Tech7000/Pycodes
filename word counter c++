@@ -1,0 +1,16 @@
+#include <iostream>
+#include <fstream>
+#include <sstream>
+using namespace std;
+
+int main() {
+    ifstream file("sample.txt");
+    string word;
+    int count = 0;
+
+    while (file >> word)
+        count++;
+
+    cout << "Total words: " << count << endl;
+    return 0;
+}
