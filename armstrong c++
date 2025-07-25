@@ -1,0 +1,15 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int num, sum = 0, temp, digit;
+    cin >> num;
+    temp = num;
+    while(temp > 0) {
+        digit = temp % 10;
+        sum += pow(digit, 3);
+        temp /= 10;
+    }
+    cout << (sum == num ? "Armstrong" : "Not Armstrong");
+}
