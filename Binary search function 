@@ -1,0 +1,68 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+void Binary_Search(int a[], int s, int e, int key)
+{	
+	if(s<=e)
+	{
+		
+		int mid=(s+e)/2;
+		
+		if(a[mid]==key)
+		{
+			cout<<"This student was Present";
+		
+		}
+		else if(a[mid]<key)
+		{
+			Binary_Search(a, mid+1, e, key);            /* RecursiveFunction call */
+		}
+		else
+		{
+			Binary_Search(a, s, mid-1, key);            /* Recursive Function call */
+		}
+	}
+	else
+	{
+		cout<<"This student was Absent";
+	}
+}
+int main()
+{
+	int n,i,key;
+	char ans;
+	
+	cout<<"How many students were present?: ";
+	cin>>n;
+	
+	int a[n];
+	
+	for (i=0; i<n; i++)
+	{
+		cout<<"Enter Roll no.s: ";
+		cin>>a[i];
+	}
+	
+	sort(a, a+n);
+	do
+	{
+	cout<<"Enter roll no whose presence you want to check: ";
+	cin>>key;
+	
+	Binary_Search(a, 0, n-1, key);            /* Function call */
+	
+	cout<<endl<<"Do you want to check another roll no?(y/n): ";
+	cin>> ans;
+	
+	
+	}while(ans == 'y');
+	
+	if(ans=='n')
+	{
+		cout<<"Thank You";
+	}
+	
+	
+	return 0;
+}
