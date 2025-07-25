@@ -1,0 +1,53 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main()
+{
+	int n,rollno,press,d;
+	char ch;
+    int student[n]; 
+	cout<< "How many students are present?"<<endl;
+	cin>> n;
+	 for (int d=0;d<n;d++)
+	 {
+	 	cout<< "Enter roll_no:"<<endl;
+	 	cin>>student[d];
+	 }
+	 cout<<"Present students are:";
+	 for (int d=0;d<n;d++)
+	 {
+	 	cout<<student[d]<<" ";
+	 }
+	 do
+	 {
+	   cout<<endl<<"Enter the roll no whose presence do you want to check :";
+	   cin>>press;
+	
+	
+	   for(d=0;d<n;d++)
+	 {
+	 
+	 	if(student[d]==press)
+		 {
+		   cout<<"Roll number is present"<<endl;
+		   break;	
+		 }
+	 }
+	    if(student[d]!=press)
+	    {
+	      cout<<" Roll no is absent"<<endl;
+	    } 
+	cout<<"Do you want to continue? y or n"<<endl;
+	cin>>ch;
+    }while(ch=='y');
+    
+    sort(student,student+n);
+	  cout<<endl<<"Sorted list is:";
+	  for (int d=0;d<n;d++)
+	 {
+	 	cout<<student[d]<<" ";
+	 }
+    
+	  return 0;
+}
