@@ -1,0 +1,44 @@
+class Student:
+    def __init__(self, name, roll):
+        self.name = name
+        self.roll = roll
+        self.subjects = {}  # Dictionary for subject:marks
+
+    def add_subject_marks(self):
+        n = int(input("Enter number of subjects: "))
+        for _ in range(n):
+            subject = input("Enter subject name: ")
+            marks = float(input(f"Enter marks for {subject}: "))
+            self.subjects[subject] = marks
+
+    def display(self):
+        print(f"\nName: {self.name}, Roll: {self.roll}")
+        print("Subject-wise Marks:")
+        for subject, mark in self.subjects.items():
+            print(f"  {subject}: {mark}")
+        avg = sum(self.subjects.values()) / len(self.subjects) if self.subjects else 0
+        print(f"Average Marks: {avg:.2f}")
+
+students = []
+
+while True:
+    print("\n1. Add Student\n2. View All Students\n3. Exit")
+    choice = input("Enter choice: ")
+
+    if choice == '1':
+        name = input("Enter name: ")
+        roll = input("Enter roll number: ")
+        s = Student(name, roll)
+        s.add_subject_marks()
+        students.append(s)
+
+    elif choice == '2':
+        if not students:
+            print("No students available.")
+        for student in students:
+            student.display()
+
+    elif choice == '3':
+        break
+    else:
+        print("Invalid choice!")
