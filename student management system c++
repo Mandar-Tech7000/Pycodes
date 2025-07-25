@@ -1,0 +1,37 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+void addStudent() {
+    ofstream file("students.txt", ios::app);
+    string name;
+    float marks;
+    cout << "Enter name: ";
+    cin >> name;
+    cout << "Enter marks: ";
+    cin >> marks;
+    file << name << " " << marks << endl;
+    file.close();
+}
+
+void viewStudents() {
+    ifstream file("students.txt");
+    string name;
+    float marks;
+    while (file >> name >> marks)
+        cout << name << ": " << marks << endl;
+    file.close();
+}
+
+int main() {
+    int choice;
+    while (true) {
+        cout << "\n1. Add\n2. View\n3. Exit\nEnter choice: ";
+        cin >> choice;
+        if (choice == 1) addStudent();
+        else if (choice == 2) viewStudents();
+        else if (choice == 3) break;
+        else cout << "Invalid\n";
+    }
+}
